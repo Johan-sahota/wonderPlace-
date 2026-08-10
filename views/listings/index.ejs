@@ -2,80 +2,109 @@
 <% layout("/layouts/boilerplate") %>
 <style>
 
-        /*  */
+    .category-button {
+        margin: 1rem;
+        margin-right: 2rem;
+    }
 
+    .category-button button {
+        padding: 8px 15px;
+        border-radius: 8px;
+    }
+
+
+    #filters {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .filter {
+        text-align: center;
+        opacity: 0.7;
+        min-width: 70px;
+        flex-shrink: 0;
+    }
+
+
+    .filter:hover {
+        opacity: 1;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+
+    .filter-icon {
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+    }
+
+    .filter p {
+        font-size: 0.8rem;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    .filter a {
+        text-decoration: none;
+        color: black;
+    }
+
+
+    .tax-switch {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-self: center;
+        border: 1px solid black;
+        border-radius: 1rem;
+        padding: 0.5rem 1rem;
+        opacity: 0.8;
+    }
+
+    .tax-switch:hover {
+        opacity: 1;
+    }
+
+
+    @media (max-width: 991px) {
+
+        /* Show button */
         .category-button {
-            margin: 1rem;
-            margin-right: 2rem;
-        }
-
-        .category-button button {
-            padding: 8px 15px;
-            border-radius: 8px;
-        }
-
-
-        #filters {
-
-            width: 100%;
-
             display: flex;
-
-            align-items: center;
-
             justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
+
+        /* Hide categories */
+        #filters {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
-
         }
 
+
+        /* Show categories when button clicked */
+        #filters.show {
+            display: flex;
+        }
+
+
+        /* 4 categories per row */
         .filter {
-
-            text-align: center;
-
-            opacity: 0.7;
-
-            min-width: 70px;
-
-            flex-shrink: 0;
-
+            flex: 0 0 calc(25% - 1.5rem);
         }
 
 
-        .filter:hover {
-
-            opacity: 1;
-             text-decoration: underline;
-            cursor: pointer;
-
-        }
-
-        .filter-icon {
-
-            font-size: 1.2rem;
-
-            margin-bottom: 4px;
-
-        }
-        .filter p {
-
-            font-size: 0.8rem;
-
-            margin: 0;
-
-            white-space: nowrap;
-
-        }
-
-        .filter a {
-
-            text-decoration: none;
-
-            color: black;
-
-        }
-
-        .tax-switch{
+        /* Tax switch */
+        .tax-switch {
+            margin-left: 0;
+            margin-top: 1rem;
             display: flex;
             text-align: center;
             justify-content: center;
@@ -85,132 +114,81 @@
             padding: 0.5rem 1rem;
             opacity: 0.8;
         }
-        .tax-switch:hover{
+
+        .tax-switch:hover {
             opacity: 1;
         }
 
-        @media (max-width: 991px) {
+    }
 
 
-            /* Show button */
+    @media (max-width: 575px) {
 
-            .category-button {
-
-                display: block;
-            }
-
-
-            /* Hide categories */
-
-            #filters {
-
-                display: none;
-
-                flex-wrap: wrap;
-
-                justify-content: center;
-
-                gap: 1rem;
-
-            }
-
-
-            /* Show categories when button clicked */
-
-            #filters.show {
-
-                display: flex;
-
-            }
-
-
-            /* 4 categories per row */
-
-            .filter {
-
-                flex: 0 0 calc(25% - 1.5rem);
-
-            }
-
-
-            /* Tax switch */
-
-            .tax-switch {
-                margin-left: 0;
-                margin-top: 1rem;
-                display: flex;
-                text-align: center;
-                justify-content: center;
-                align-self: center;
-                border: 1px solid black;
-                border-radius: 1rem;
-                padding: 0.5rem 1rem;
-                opacity: 0.8;
-
-            }
-            .tax-switch:hover{
-                opacity: 1;
-            }
-
-
+        #filters {
+            gap: 1rem;
         }
 
-        @media (max-width: 575px) {
 
-
-            #filters {
-
-                gap: 1rem;
-
-            }
-
-
-            .filter {
-
-                flex: 0 0 calc(33.333% - 1rem);
-
-            }
-            .filter p {
-
-                font-size: 0.75rem;
-
-            }
-            #categoryBtn{
-                position: relative;
-                left: 225px;
-            }
+        .filter {
+            flex: 0 0 calc(33.333% - 1rem);
         }
-        @media (min-width: 992px) {
 
-            .category-button {
+        .filter p {
+            font-size: 0.75rem;
+        }
 
-                display: none;
+        /*
+         * FIX:
+         * Removed left: 225px
+         * Center the Categories button instead.
+         */
+        #categoryBtn {
+            position: relative;
+            left: 0;
+        }
 
-            }
-            #filters {
-
-                display: flex;
-
-                flex-wrap: nowrap;
-
-                justify-content: center;
-
-                gap: 2rem;
-
-            }
-            #filters{
+        .category-button {
+            width: 100%;
             display: flex;
-            flex-wrap: wrap;
-            }
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            margin: 1rem 0;
+        }
 
-        }  
-        .none{
+    }
+
+
+    @media (min-width: 992px) {
+
+        .category-button {
             display: none;
         }
-        .tax-show{
-             display: inline;
+
+        #filters {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 2rem;
         }
-    </style>
+
+        #filters {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+    }
+
+
+    .none {
+        display: none;
+    }
+
+    .tax-show {
+        display: inline;
+    }
+
+</style>
      <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
 <div class="category-button">
 
