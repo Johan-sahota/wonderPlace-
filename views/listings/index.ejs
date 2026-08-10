@@ -122,41 +122,39 @@
     }
 
 
-    @media (max-width: 575px) {
+   @media (max-width: 575px) {
 
-        #filters {
-            gap: 1rem;
-        }
-
-
-        .filter {
-            flex: 0 0 calc(33.333% - 1rem);
-        }
-
-        .filter p {
-            font-size: 0.75rem;
-        }
-
-        /*
-         * FIX:
-         * Removed left: 225px
-         * Center the Categories button instead.
-         */
-        #categoryBtn {
-            position: relative;
-            left: 0;
-        }
-
-        .category-button {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-            margin: 1rem 0;
-        }
-
+    #filters {
+        gap: 1rem;
     }
+
+    /* Categories button → RIGHT SIDE */
+    .category-button {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-sizing: border-box;
+        padding-right: 15px;
+        margin: 1rem 0;
+    }
+
+    #categoryBtn {
+        max-width: 100%;
+        white-space: nowrap;
+    }
+
+    /* Individual category items */
+    .filter {
+        flex: 0 0 calc(33.333% - 1rem);
+        min-width: 0;
+        text-align: center;
+    }
+
+    .filter p {
+        font-size: 0.75rem;
+    }
+}
 
 
     @media (min-width: 992px) {
