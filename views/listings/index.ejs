@@ -1,0 +1,516 @@
+
+<% layout("/layouts/boilerplate") %>
+<style>
+
+        /*  */
+
+        .category-button {
+            margin: 1rem;
+        }
+
+        .category-button button {
+            padding: 8px 15px;
+            border-radius: 8px;
+        }
+
+
+        #filters {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 1rem;
+
+        }
+
+        .filter {
+
+            text-align: center;
+
+            opacity: 0.7;
+
+            min-width: 70px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .filter:hover {
+
+            opacity: 1;
+             text-decoration: underline;
+            cursor: pointer;
+
+        }
+
+        .filter-icon {
+
+            font-size: 1.2rem;
+
+            margin-bottom: 4px;
+
+        }
+        .filter p {
+
+            font-size: 0.8rem;
+
+            margin: 0;
+
+            white-space: nowrap;
+
+        }
+
+        .filter a {
+
+            text-decoration: none;
+
+            color: black;
+
+        }
+
+        .tax-switch{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-self: center;
+            border: 1px solid black;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem;
+            opacity: 0.8;
+        }
+        .tax-switch:hover{
+            opacity: 1;
+        }
+
+        @media (max-width: 991px) {
+
+
+            /* Show button */
+
+            .category-button {
+
+                display: block;
+            }
+
+
+            /* Hide categories */
+
+            #filters {
+
+                display: none;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 1rem;
+
+            }
+
+
+            /* Show categories when button clicked */
+
+            #filters.show {
+
+                display: flex;
+
+            }
+
+
+            /* 4 categories per row */
+
+            .filter {
+
+                flex: 0 0 calc(25% - 1.5rem);
+
+            }
+
+
+            /* Tax switch */
+
+            .tax-switch {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                align-self: center;
+                border: 1px solid black;
+                border-radius: 1rem;
+                padding: 0.5rem 1rem;
+                opacity: 0.8;
+
+            }
+            .tax-switch:hover{
+                opacity: 1;
+            }
+
+
+        }
+
+        @media (max-width: 575px) {
+
+
+            #filters {
+
+                gap: 1rem;
+
+            }
+
+
+            .filter {
+
+                flex: 0 0 calc(33.333% - 1rem);
+
+            }
+            .filter p {
+
+                font-size: 0.75rem;
+
+            }
+            #categoryBtn{
+                position: relative;
+                left: 225px;
+            }
+        }
+        @media (min-width: 992px) {
+
+            .category-button {
+
+                display: none;
+
+            }
+            #filters {
+
+                display: flex;
+
+                flex-wrap: nowrap;
+
+                justify-content: center;
+
+                gap: 2rem;
+
+            }
+            #filters{
+            display: flex;
+            flex-wrap: wrap;
+            }
+
+        }  
+        .none{
+            display: none;
+        }
+        .tax-show{
+             display: inline;
+        }
+    </style>
+     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+<div class="category-button">
+
+        <button
+            id="categoryBtn"
+            type="button"
+            class="btn btn-outline-dark"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+            Categories
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================================
+         CATEGORY FILTERS
+    ========================================= -->
+
+    <div id="filters" class="mt-3 mb-3">
+
+
+        <!-- Trending -->
+
+        <div class="filter">
+
+            <a href="/listings?category=Trending">
+
+                <div class="filter-icon">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                </div>
+
+                <p>Trending</p>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Rooms -->
+
+        <div class="filter">
+
+            <a href="/listings?category=Rooms">
+
+                <div class="filter-icon">
+
+                    <i class="fa-solid fa-bed"></i>
+
+                </div>
+
+                <p>Rooms</p>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Iconic Cities -->
+
+        <div class="filter">
+
+            <a href="/listings?category=Iconic%20Cities">
+
+                <div class="filter-icon">
+
+                    <i class="fa-solid fa-city"></i>
+
+                </div>
+
+                <p>Iconic Cities</p>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Mountains -->
+
+        <div class="filter">
+
+            <a href="/listings?category=Mountains">
+
+                <div class="filter-icon">
+
+                    <i class="fa-solid fa-mountain"></i>
+
+                </div>
+
+                <p>Mountains</p>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Castles -->
+
+        <div class="filter">
+
+            <a href="/listings?category=Castles">
+
+                <div class="filter-icon">
+
+                    <i class="fa-solid fa-chess-rook"></i>
+
+                </div>
+
+                <p>Castles</p>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Amazing Pools -->
+
+        <div class="filter">
+
+            <a href="/listings?category=Amazing%20Pools">
+
+                <div class="filter-icon">
+
+                    <i class="fa-solid fa-person-swimming"></i>
+
+                </div>
+
+                <p>Amazing Pools</p>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Camping -->
+
+        <div class="filter">
+
+            <a href="/listings?category=Camping">
+
+                <div class="filter-icon">
+
+                    <i class="fa-solid fa-campground"></i>
+
+                </div>
+
+                <p>Camping</p>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Farms -->
+
+        <div class="filter">
+
+            <a href="/listings?category=Farms">
+
+                <div class="filter-icon">
+
+                    <i class="fa-solid fa-wheat-awn"></i>
+
+                </div>
+
+                <p>Farms</p>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Arctic -->
+
+        <div class="filter">
+
+            <a href="/listings?category=Arctic">
+
+                <div class="filter-icon">
+
+                    <i class="fa-solid fa-snowflake"></i>
+
+                </div>
+
+                <p>Arctic</p>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Tax Switch -->
+        <div class="tax-switch ms-auto">
+
+            <div class="form-check form-switch form-check-reverse">
+
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="switchCheckDefault"
+                >
+
+                <label
+                    class="form-check-label"
+                    for="switchCheckDefault"
+                >
+
+                    Display Total After Taxes
+
+                </label>
+
+            </div>
+
+        </div>
+        
+
+    </div>
+    <!-- <h3>All listings</h3> -->
+  
+   <%  for( let list of allListing){%> 
+    <a href="/listings/<%= list._id %>" class="listings-link">
+ <div class="card col listing-card" >
+  <img src="<%= list.img.url %>" class="card-img-top" alt="..." style="height: 20rem;">
+  <div class="card-img-overlay"></div>
+  <div class="card-body">
+    <p class="card-text">
+    
+    <p class="card-text">
+  <b><%= list.title %></b> <br>
+  <P class="price">&#x20B9; <i><%= list.price ? list.price.toLocaleString("en-IN") : "N/A" %> /Night </i></P>
+  <% let finalPrice = list.price * 1.18  %>
+  <i  class=" total-Price none">&nbsp;&#x20B9;<%= finalPrice.toLocaleString("en-IN") %>/Night Include GST</i>
+</p>
+    </p>
+  </div>
+</div>
+</a>
+  <%}%>  
+  </div>
+
+ <script>
+
+        const categoryBtn =
+            document.querySelector("#categoryBtn");
+
+        const filters =
+            document.querySelector("#filters");
+
+
+        categoryBtn.addEventListener("click", function () {
+
+            filters.classList.toggle("show");
+
+
+            // Change button text
+
+            if (filters.classList.contains("show")) {
+
+                categoryBtn.innerHTML =
+                    '<i class="fa-solid fa-bars"></i> Close ';
+
+            } else {
+
+                categoryBtn.innerHTML =
+                    '<i class="fa-solid fa-bars"></i> Categories';
+
+            }
+
+        });
+         let taxSwitch = document.getElementById("switchCheckDefault");
+
+       let prices = document.getElementsByClassName("price");
+       let totalPrices = document.getElementsByClassName("total-Price");
+
+      taxSwitch.addEventListener("click", () => {
+
+           for (let price of prices) {
+        price.classList.toggle("none");
+         }
+
+        for (let totalPrice of totalPrices) {
+        totalPrice.classList.toggle("tax-show");
+       }
+
+});
+
+    </script>
+
+
