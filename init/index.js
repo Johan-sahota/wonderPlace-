@@ -1,16 +1,38 @@
+const dns = require("dns");
+
+dns.setServers([
+    "8.8.8.8",
+    "1.1.1.1"
+]);
+
 const mongoose= require("mongoose");
+require("dotenv").config({ path:"../.env" });
 const initData=require("./data.js");
 const Listing=require("../models/listing.js");
 
 
-main().then(()=>{
-    console.log("ok connected with database");
-}).catch((err)=>{ console.log(err)});
+const dbUrl = process.env.MONGO_URL;
 
+async function initDB() {
+    try {
+        // Connect FIRST
+        await mongoose.connect(dbUrl);
 
-async function main(){
-    await mongoose.connect("mongodb://127.0.0.1:27017/wonderPlace");
-}
+        console.log("MongoDB Atlas connected!");
+
+        // Delete old data
+        await Listing.deleteMany({});
+
+        console.log("Old listings deleted");
+
+        // Insert new data
+        await Listing.insertMany(initData.data);
+
+        console.log("Data was initialized successfully!");
+    } catch (err) {
+        console.log("DATABASE ERROR:");
+        console.log(err);
+    } 
 
 
 const initDB=async ()=>{
@@ -19,5 +41,5 @@ const initDB=async ()=>{
     await Listing.insertMany(initData.data);
     console.log("data was initialized:");
 }
-
+}
 initDB();
